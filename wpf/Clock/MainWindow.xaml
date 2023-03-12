@@ -25,22 +25,21 @@
 	Background="#000000" Foreground="#ffffff"
 	FontFamily="Saranya UI SC H"
 	Title="UTC Clock"
-	MinWidth="256" MinHeight="128"
+	MinWidth="380" MinHeight="120"
 	Width="566" Height="350"
 	WindowStartupLocation="CenterScreen">
-	<Grid Margin="1">
+	<Grid>
 
 		<TextBlock Name="TextBlock" Foreground="#dedede"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			FontFamily="Saranya Mono SC H" FontSize="42" Margin="14">
 			<StackPanel>
-				<Grid Margin="0 3">
+				<Grid Margin="0 2">
 					<TextBlock Name="TextTime" />
 				</Grid>
-				<Grid Margin="0 3">
+				<Grid Margin="0 2">
 					<TextBlock Name="TextDate" HorizontalAlignment="Left" />
-					<TextBlock Name="TextWeek" HorizontalAlignment="Right"
-						Background="#000000" />
+					<TextBlock Name="TextWeek" HorizontalAlignment="Right" />
 				</Grid>
 			</StackPanel>
 		</TextBlock>

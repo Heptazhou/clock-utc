@@ -44,7 +44,7 @@ namespace Clock
 			InitializeComponent();
 
 			var Clk = new DispatcherTimer();
-			Clk.Interval = TimeSpan.FromMilliseconds(1);
+			Clk.Interval = TimeSpan.FromMilliseconds(10);
 			Clk.Tick += new EventHandler(Tick);
 			Clk.Start();
 
@@ -59,7 +59,7 @@ namespace Clock
 			TextTime.Text = Time.ToString(timeformat("yyyy-MM-dd HH:mm:ss"));
 			var Date = Time.Year * 1000 + Time.DayOfYear;
 			TextDate.Text = Date.ToString(dateformat("0000-000"));
-			var Week = week(Time) * 10 + (int)Time.DayOfWeek;
+			var Week = week(Time) * 10 + week(Time.DayOfWeek);
 			TextWeek.Text = Week.ToString(weekformat("W00-0"));
 		}
 
@@ -67,9 +67,26 @@ namespace Clock
 		private static string dateformat(string fmt) { return fmt; }
 		private static string weekformat(string fmt) { return fmt; }
 		private static Color color(string s) { return (Color)ColorConverter.ConvertFromString(s); }
-		private static int week(DateTime d)
+		private static int week(DayOfWeek d) { return d <= 0 ? 7 : (int)d; }
+		private static int week(DateTime dt)
 		{
-			return new GregorianCalendar().GetWeekOfYear(d, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+			var wk = ISOWeek.GetWeekOfYear(dt);
+			var ny = ISOWeek.GetWeekOfYear(new DateTime(dt.Year, 1, 1));
+			if (ny > 1)
+				if (wk > 10 && dt.Month == 1)
+					wk = 01;
+				else
+					wk += 1;
+			if (dt.Month == 12 && dt.Day > 25 && dt.Year < 9999)
+			{
+				var no = week(new DateTime(dt.Year + 1, 1, 1).DayOfWeek) - 1;
+				if (no + dt.Day > 31)
+					wk = 01;
+			}
+			else if (dt.Year == 9999)
+				if (dt.Month == 12 && dt.Day > 26)
+					wk = 01;
+			return (wk);
 		}
 	}
 }

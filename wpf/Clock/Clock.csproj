@@ -26,6 +26,10 @@
 
 	<PropertyGroup>
 		<ApplicationIcon>Icon.ico</ApplicationIcon>
+		<AssemblyTitle>UTC Clock</AssemblyTitle>
+		<Company>0h7z</Company>
+		<Copyright>Copyright © 2023 Heptazhou</Copyright>
+		<Product>clock-utc</Product>
 		<SatelliteResourceLanguages>en;zh</SatelliteResourceLanguages>
 	</PropertyGroup>
 

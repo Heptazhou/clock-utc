@@ -46,9 +46,9 @@ try
 	run(`dotnet sln add $(n)`)
 	run(`dotnet build -c $c`)
 	fmt("$n/bin/$c/$f/")
-	mv("$n/bin/$c/$f/", "$n/bin/$c/$n/")
-	run(`7z a $a $z.7z ./$n/bin/$c/$n/`)
-	rm("$n/bin/$c/$n", recursive = true)
+	mv("$n/bin/$c/$f/", "$n/bin/$c/$z/")
+	run(`7z a $a $z.7z ./$n/bin/$c/$z/`)
+	rm("$n/bin/$c/$z", recursive = true)
 	rm("$n.sln")
 catch e
 	@info e
