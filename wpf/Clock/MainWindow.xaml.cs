@@ -51,6 +51,9 @@ namespace Clock
 			TextTime.Foreground = new SolidColorBrush(color("#66ccff"));
 			TextDate.Foreground = new SolidColorBrush(color("#9999ff"));
 			TextWeek.Foreground = new SolidColorBrush(color("#cccc00"));
+			TextJmdt.Foreground = new SolidColorBrush(color("#599fff"));
+			TextJvar.Foreground = new SolidColorBrush(color("#a43ee4"));
+			TextJvar.Text = "MJD";
 		}
 
 		private void Tick(object? sender, EventArgs e)
@@ -61,11 +64,15 @@ namespace Clock
 			TextDate.Text = Date.ToString(dateformat("0000-000"));
 			var Week = week(Time) * 10 + week(Time.DayOfWeek);
 			TextWeek.Text = Week.ToString(weekformat("W00-0"));
+			var Jmdt = jmdt(Time);
+			TextJmdt.Text = Jmdt.ToString(jmdtformat("00.00000"));
 		}
 
 		private static string timeformat(string fmt) { return fmt; }
 		private static string dateformat(string fmt) { return fmt; }
 		private static string weekformat(string fmt) { return fmt; }
+		private static string jmdtformat(string fmt) { return fmt; }
+		private static double jmdt(DateTime dt) { return 15018 + dt.ToOADate(); }
 		private static Color color(string s) { return (Color)ColorConverter.ConvertFromString(s); }
 		private static int week(DayOfWeek d) { return d <= 0 ? 7 : (int)d; }
 		private static int week(DateTime dt)
