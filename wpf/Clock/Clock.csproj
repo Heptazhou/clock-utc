@@ -33,4 +33,8 @@
 		<SatelliteResourceLanguages>en;zh</SatelliteResourceLanguages>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<DefineConstants>MJD</DefineConstants>
+	</PropertyGroup>
+
 </Project>

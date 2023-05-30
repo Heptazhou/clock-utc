@@ -34,7 +34,11 @@ namespace Clock
 	{
 		private void Main(object sender, StartupEventArgs e)
 		{
+#if MJD
+			var MW = new MainWindowMJD();
+#else
 			var MW = new MainWindow();
+#endif
 			SetAppPreferDarkMode();
 			SetImmersiveDarkMode(new WindowInteropHelper(MW).EnsureHandle());
 			MW.Show();
