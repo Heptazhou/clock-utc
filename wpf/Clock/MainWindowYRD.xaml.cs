@@ -25,11 +25,11 @@ using static Clock.Util;
 namespace Clock
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for MainWindowYRD.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindowYRD : Window
 	{
-		public MainWindow()
+		public MainWindowYRD()
 		{
 			InitializeComponent();
 

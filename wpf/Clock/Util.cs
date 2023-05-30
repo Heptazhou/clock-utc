@@ -50,5 +50,10 @@ namespace Clock
 					wk = 01;
 			return (wk);
 		}
+		public static int year(DateTime dt)
+		{
+			var carry = dt.Month == 12 && dt.Day > 25 && week(dt) < 10;
+			return dt.Year + (carry ? 1 : 0);
+		}
 	}
 }

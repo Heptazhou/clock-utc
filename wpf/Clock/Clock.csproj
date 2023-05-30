@@ -34,7 +34,9 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<DefineConstants>MJD</DefineConstants>
+		<DefineConstants>$(DefineConstants);MJD</DefineConstants>
+		<DefineConstants>$(DefineConstants);WKD</DefineConstants>
+		<DefineConstants>$(DefineConstants);YRD</DefineConstants>
 	</PropertyGroup>
 
 </Project>

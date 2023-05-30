@@ -25,11 +25,11 @@ using static Clock.Util;
 namespace Clock
 {
 	/// <summary>
-	/// Interaction logic for MainWindowMJD.xaml
+	/// Interaction logic for MainWindowWKD.xaml
 	/// </summary>
-	public partial class MainWindowMJD : Window
+	public partial class MainWindowWKD : Window
 	{
-		public MainWindowMJD()
+		public MainWindowWKD()
 		{
 			InitializeComponent();
 
@@ -39,23 +39,18 @@ namespace Clock
 			Clk.Start();
 
 			TextTime.Foreground = new SolidColorBrush(color("#66ccff"));
-			TextDate.Foreground = new SolidColorBrush(color("#9999ff"));
-			TextWeek.Foreground = new SolidColorBrush(color("#cccc00"));
-			TextJmdt.Foreground = new SolidColorBrush(color("#599fff"));
-			TextJvar.Foreground = new SolidColorBrush(color("#a43ee4"));
-			TextJvar.Text = "MJD";
+			TextWeek.Foreground = new SolidColorBrush(color("#9999ff"));
+			TextDate.Foreground = new SolidColorBrush(color("#cccc00"));
 		}
 
 		private void Tick(object? sender, EventArgs e)
 		{
 			var Time = DateTime.UtcNow;
 			TextTime.Text = Time.ToString(timeformat("yyyy-MM-dd HH:mm:ss"));
-			var Date = Time.Year * 1000 + Time.DayOfYear;
-			TextDate.Text = Date.ToString(dateformat("0000-000"));
-			var Week = week(Time) * 10 + week(Time.DayOfWeek);
-			TextWeek.Text = Week.ToString(weekformat("W00-0"));
-			var Jmdt = jmdt(Time);
-			TextJmdt.Text = Jmdt.ToString(jmdtformat("00.00000"));
+			var Week = year(Time) * 1000 + week(Time) * 10 + week(Time.DayOfWeek);
+			TextWeek.Text = Week.ToString(weekformat("0000-W00-0"));
+			var Date = Time.DayOfYear;
+			TextDate.Text = Date.ToString(dateformat("000"));
 		}
 	}
 }
