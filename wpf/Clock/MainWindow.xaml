@@ -23,7 +23,7 @@
 	xmlns:local="clr-namespace:Clock"
 	mc:Ignorable="d"
 	Background="#000000" Foreground="#ffffff"
-	FontFamily="Saranya UI SC H"
+	FontFamily="Saranya UI SC H, Saranya UI SC"
 	Title="UTC Clock"
 	MinWidth="380" MinHeight="120"
 	Width="566" Height="350"
@@ -32,7 +32,8 @@
 
 		<TextBlock Name="TextBlock" Foreground="#dedede"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
-			FontFamily="Saranya Mono SC H" FontSize="42" Margin="14">
+			FontFamily="Saranya Mono SC H, Saranya Mono SC"
+			FontSize="42" Margin="14">
 			<StackPanel Name="StackPanel">
 				<Grid Margin="0 2">
 					<TextBlock Name="TextTime" />
@@ -41,8 +42,8 @@
 					<TextBlock Name="TextDayL" HorizontalAlignment="Left" />
 					<TextBlock Name="TextDayR" HorizontalAlignment="Right" />
 				</Grid>
-				<Grid Margin="0 2" Name="GridMjd">
-					<TextBlock Name="TextMjdL" HorizontalAlignment="Left" Text="MJD" />
+				<Grid Margin="0 2" Name="GridMjdT">
+					<TextBlock Name="TextMjdL" HorizontalAlignment="Left" />
 					<TextBlock Name="TextMjdR" HorizontalAlignment="Right" />
 				</Grid>
 			</StackPanel>

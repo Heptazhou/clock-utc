@@ -27,7 +27,7 @@ namespace Clock
 	/// </summary>
 	public partial class App : Application
 	{
-		private void Main(object? _sender, StartupEventArgs? _e)
+		private void Main(object? _sender, EventArgs? _e)
 		{
 			var MW = new MainWindow();
 			SetAppPreferDarkMode();
@@ -35,14 +35,14 @@ namespace Clock
 			MW.Show();
 		}
 
-		[DllImport("dwmapi.dll")]
-		private static extern int DwmSetWindowAttribute(IntPtr hWnd, int attr, ref int value, int size);
+		[LibraryImport("dwmapi.dll")]
+		private static partial int DwmSetWindowAttribute(IntPtr hWnd, int attr, ref int value, int size);
 
-		[DllImport("uxtheme.dll", EntryPoint = "#135")]
-		private static extern int AllowDarkModeForApp(int allow = 1);
+		[LibraryImport("uxtheme.dll", EntryPoint = "#135")]
+		private static partial int AllowDarkModeForApp(int allow = 1);
 
-		[DllImport("uxtheme.dll", EntryPoint = "#135")]
-		private static extern int SetPreferredAppMode(int mode = (int)AppMode.ForceDark);
+		[LibraryImport("uxtheme.dll", EntryPoint = "#135")]
+		private static partial int SetPreferredAppMode(int mode = (int)AppMode.ForceDark);
 
 		private static void SetAppPreferDarkMode()
 		{

@@ -33,20 +33,21 @@ namespace Clock
 		{
 			InitializeComponent();
 
+			TextTime.Foreground = new SolidColorBrush(color("#66ccff"));
+			TextDayL.Foreground = new SolidColorBrush(color("#9999ff"));
+			TextDayR.Foreground = new SolidColorBrush(color("#cccc00"));
+			TextMjdL.Foreground = new SolidColorBrush(color("#a43ee4"));
+			TextMjdR.Foreground = new SolidColorBrush(color("#599fff"));
+#if MJD
+			TextMjdL.Text = "MJD";
+#else
+			StackPanel.Children.Remove(GridMjdT);
+#endif
+
 			var Clk = new DispatcherTimer();
 			Clk.Interval = TimeSpan.FromSeconds(1);
 			Clk.Tick += new EventHandler(Tick);
 			Clk.Start(); Tick(null, null);
-
-			TextTime.Foreground = new SolidColorBrush(color("#66ccff"));
-			TextDayL.Foreground = new SolidColorBrush(color("#9999ff"));
-			TextDayR.Foreground = new SolidColorBrush(color("#cccc00"));
-#if MJD
-			TextMjdL.Foreground = new SolidColorBrush(color("#a43ee4"));
-			TextMjdR.Foreground = new SolidColorBrush(color("#599fff"));
-#else
-			StackPanel.Children.Remove(GridMjd);
-#endif
 		}
 
 		private void Tick(object? _sender, EventArgs? _e)
