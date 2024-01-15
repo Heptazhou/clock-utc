@@ -1,5 +1,5 @@
 <!--
- * Copyright (C) 2023 Heptazhou <zhou@0h7z.com>
+ * Copyright (C) 2023-2024 Heptazhou <zhou@0h7z.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -33,13 +33,17 @@
 		<TextBlock Name="TextBlock" Foreground="#dedede"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			FontFamily="Saranya Mono SC H" FontSize="42" Margin="14">
-			<StackPanel>
+			<StackPanel Name="StackPanel">
 				<Grid Margin="0 2">
 					<TextBlock Name="TextTime" />
 				</Grid>
 				<Grid Margin="0 2">
-					<TextBlock Name="TextDate" HorizontalAlignment="Left" />
-					<TextBlock Name="TextWeek" HorizontalAlignment="Right" />
+					<TextBlock Name="TextDayL" HorizontalAlignment="Left" />
+					<TextBlock Name="TextDayR" HorizontalAlignment="Right" />
+				</Grid>
+				<Grid Margin="0 2" Name="GridMjd">
+					<TextBlock Name="TextMjdL" HorizontalAlignment="Left" Text="MJD" />
+					<TextBlock Name="TextMjdR" HorizontalAlignment="Right" />
 				</Grid>
 			</StackPanel>
 		</TextBlock>

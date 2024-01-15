@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Heptazhou <zhou@0h7z.com>
+ * Copyright (C) 2023-2024 Heptazhou <zhou@0h7z.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -18,10 +18,10 @@
 using System.Windows;
 
 [assembly: ThemeInfo(
-	ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
-									 //(used if a resource is not found in the page,
-									 // or application resource dictionaries)
-	ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
-											  //(used if a resource is not found in the page,
-											  // app, or any theme specific resource dictionaries)
+	ResourceDictionaryLocation.None,            // where theme specific resource dictionaries are located
+												// (used if a resource is not found in the page,
+												// or application resource dictionaries)
+	ResourceDictionaryLocation.SourceAssembly   // where the generic resource dictionary is located
+												// (used if a resource is not found in the page,
+												// app, or any theme specific resource dictionaries)
 )]

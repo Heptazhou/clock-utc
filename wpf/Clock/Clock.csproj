@@ -1,5 +1,5 @@
 <!--
- * Copyright (C) 2023 Heptazhou <zhou@0h7z.com>
+ * Copyright (C) 2023-2024 Heptazhou <zhou@0h7z.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -19,7 +19,8 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net7.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
@@ -28,13 +29,14 @@
 		<ApplicationIcon>Icon.ico</ApplicationIcon>
 		<AssemblyTitle>UTC Clock</AssemblyTitle>
 		<Company>0h7z</Company>
-		<Copyright>Copyright © 2023 Heptazhou</Copyright>
+		<Copyright>Copyright © 2023-2024 Heptazhou</Copyright>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 		<Product>clock-utc</Product>
 		<SatelliteResourceLanguages>en;zh</SatelliteResourceLanguages>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<DefineConstants>MJD</DefineConstants>
+		<DefineConstants>$(DefineConstants);MJD</DefineConstants>
 	</PropertyGroup>
 
 </Project>

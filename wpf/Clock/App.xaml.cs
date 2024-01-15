@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Heptazhou <zhou@0h7z.com>
+ * Copyright (C) 2023-2024 Heptazhou <zhou@0h7z.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -16,12 +16,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -32,13 +27,9 @@ namespace Clock
 	/// </summary>
 	public partial class App : Application
 	{
-		private void Main(object sender, StartupEventArgs e)
+		private void Main(object? _sender, StartupEventArgs? _e)
 		{
-#if MJD
-			var MW = new MainWindowMJD();
-#else
 			var MW = new MainWindow();
-#endif
 			SetAppPreferDarkMode();
 			SetImmersiveDarkMode(new WindowInteropHelper(MW).EnsureHandle());
 			MW.Show();

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Heptazhou <zhou@0h7z.com>
+ * Copyright (C) 2023-2024 Heptazhou <zhou@0h7z.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -23,11 +23,7 @@ namespace Clock
 {
 	public static class Util
 	{
-		public static string timeformat(string fmt) { return fmt; }
-		public static string dateformat(string fmt) { return fmt; }
-		public static string weekformat(string fmt) { return fmt; }
-		public static string jmdtformat(string fmt) { return fmt; }
-		public static double jmdt(DateTime dt) { return 15018 + dt.ToOADate(); }
+		public static double mjd(DateTime dt) { return 15018 + dt.ToOADate(); }
 		public static Color color(string s) { return (Color)ColorConverter.ConvertFromString(s); }
 		public static int week(DayOfWeek d) { return d <= 0 ? 7 : (int)d; }
 		public static int week(DateTime dt)
@@ -49,6 +45,11 @@ namespace Clock
 				if (dt.Month == 12 && dt.Day > 26)
 					wk = 01;
 			return (wk);
+		}
+		public static int year(DateTime dt)
+		{
+			var carry = dt.Month == 12 && dt.Day > 25 && week(dt) < 10;
+			return dt.Year + (carry ? 1 : 0);
 		}
 	}
 }

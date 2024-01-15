@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Heptazhou <zhou@0h7z.com>
+# Copyright (C) 2023-2024 Heptazhou <zhou@0h7z.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -13,11 +13,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-const a = `-m0=lzma -md1024m -mfb273 -mmt -ms -mx9 -stl -xr!\*.pdb`
+using EzXML: readxml
+
+const csproj(p, x) = findlast("//$x", readxml("$p/$p.csproj")).content
+
+const a = `-m0=lzma -md1024m -mfb273 -mmt -mqs -ms -mtm- -mx9 -stl -xr!\*.pdb`
 const c = "Release"
-const f = "net7.0-windows"
 const n = "Clock"
-const z = "clock-utc-net7"
+const t = csproj(n, :TargetFramework)
+const z = csproj(n, :Product) * '-' * match(r"^\w+", t).match
 
 function fmt(dir::String)
 	cd(dir) do
@@ -45,8 +49,8 @@ try
 	run(`dotnet new sln -n $n`)
 	run(`dotnet sln add $(n)`)
 	run(`dotnet build -c $c`)
-	fmt("$n/bin/$c/$f/")
-	mv("$n/bin/$c/$f/", "$n/bin/$c/$z/")
+	fmt("$n/bin/$c/$t/")
+	mv("$n/bin/$c/$t/", "$n/bin/$c/$z/")
 	run(`7z a $a $z.7z ./$n/bin/$c/$z/`)
 	rm("$n/bin/$c/$z", recursive = true)
 	rm("$n.sln")
